@@ -1,0 +1,105 @@
+
+{% extends 'operation_templates/base_template.html' %}
+
+{% block page_title %}
+   <h5> Detail </h5>
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+<section class="content">
+  <div class="container-fluid">
+
+      <a class="btn btn-primary" href="{% url 'add_manager' %}" role="button">+ Add operation</a> <br/>&nbsp;
+
+      {% if messages %}
+                          <div class="form-group">
+                          <div class="col-12">
+                              {% for message in messages %}
+                              {% if message.tags == "error" %}
+                                  <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                  {{ message }}
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  </div>
+                              {% elif message.tags == "success" %}
+                                  <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                  {{ message }}
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  </div>
+                              {% endif %}
+                              {% endfor %}
+                          </div>
+                          </div>
+                          {% endif %}
+                          <div class="row">
+
+                            <div class="col-md-12">
+
+
+<div class="card">
+  <div class="card-header"><strong>
+    	{{ customer_request.first_name }} 
+		{{ customer_request.last_name }}</strong>
+  </div>
+  <div class="card-body">
+    <table>
+        <tr><td>
+            <p class="card-text">
+            <strong>PassPort No: </strong>{{ customer_request.passPort_no }}</p>
+        </td></tr>
+    </table>
+    
+
+<p class="card-text">
+<strong>Email: </strong>{{ customer_request.email }}</p>
+
+<p class="card-text">
+<strong>Phone: </strong>{{ customer_request.phone }}
+</p>
+
+<p class="card-text">
+<strong>Address: </strong>{{ customer_request.address }}</p>
+
+<p class="card-text">
+<strong>City: </strong>{{ customer_request.city }}</p>
+
+<p class="card-text">
+<strong>Departur Date: </strong>{{ customer_request.departure_date }}</p>
+<p class="card-text">
+<strong>Date of return : </strong> {{customer_request.date_of_return}} </p>
+<p class="card-text">
+<strong>Zipcode: </strong>{{ customer_request.zipcode }}</p>
+<p class="card-text">
+<strong>Duration Of cover: </strong>{{customer_request.duration_of_cover}}</p>
+<p class="card-text">
+<strong>Destination:</strong> {{customer_request.destination}} </p>
+<p class="card-text"> 
+<strong>Other destination</strong>
+ {{customer_request.other_destination}}
+<p class="card-text">
+<strong>payslip: </strong><img src="{{customer_request.Payslip.url }}" style="width:150px"></p>
+
+<p class="card-text">
+<strong>Passport Copy </strong><img src="{{customer_request.passportcopy.url }}" style="width:150px"></p>
+
+
+
+    
+  </div>
+</div>
+
+<br/><br/>
+
+<a href="{% url 'edit_request' customer_request.id %}" class="btn btn-secondary">Back</a>
+<a href="{% url 'edit_request' customer_request.id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'edit_request' customer_request.id %}" class="btn btn-secondary">Update Record</a>
+
+</section>
+
+
+{% endblock %}

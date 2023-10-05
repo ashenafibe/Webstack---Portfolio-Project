@@ -1,0 +1,12 @@
+{% include 'header.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+
+      
+        {{ form|crispy }}
+   
+    <input class="btn btn-success" type="submit" value="submit">
+</form>
+{% endblock content %}

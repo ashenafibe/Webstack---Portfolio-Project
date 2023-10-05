@@ -1,0 +1,32 @@
+{% include 'main/header.html' %}
+{% load crispy_forms_tags %}
+
+<div class="row my-4">
+    <div class="col-md-6 offset-md-3">
+        <div class="border p-3 bg-white">
+            <h4> Edit Request</h4>
+            <hr>
+            <form method="POST" enctype="multipart/form-data"> 
+                {% csrf_token %}
+                <table style="margin-left: 23%;" >
+                    <tr>
+                        <td>
+                            <table>
+                    {{ form.as_table}}
+                </table>
+                </td>
+                </tr>
+                <tr>
+                    <td><input class="btn btn-success" type="submit" value="submit">
+                    <input class="btn btn-success" type="submit" value="Back"></td>
+                </tr>
+                </table>
+                
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+    
